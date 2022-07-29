@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title> My Portfolio </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="projects.js"></script> 
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+
+
+  </head>
+  <body>
+    <div class="header">
+      <h1>Codewizards' portfolio</h1>
+      <div class="categories">
+      
+      </div>
+    </div>
+    <div class="container">
+      
+    </div>
+    <script>
+        var html = "";
+        for (i in portfolio) {
+          var info = portfolio[i];
+          console.log(info);
+          
+          var projectsHTML = "";
+          var list = info['projects'];
+          
+          for (p of list) {
+            projectsHTML += `<div class="portfolio-item">
+                                 <h3> ${p['title']} </h3>
+                                 <a href="${p['link']}">
+                                 <img src=" ${p['image']} ">
+                                 </a>
+                                 <p> ${p['description']} </p>
+                                </div>`;
+          }
+          
+          
+          html += `<div class="portfolio-container"
+                           id="portfolio-${i}">
+                           <h2>${info['category']}</h2>
+                           ${projectsHTML}
+                            </div>`;
+        }
+        $('.container').append(html);
+
+        var navHTML = `<a href="#portfolio-${i}">
+                          ${info['category']}
+                          </a>`;
+      $('.categories').append(navHTML);
+    </script>
+  </body>
+</html>
+<script type="application/javascript" src="/share.js"></script>
